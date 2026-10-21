@@ -1,36 +1,198 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Binky is a private, self-hosted personal AI assistant.">
-<title>Binky | Personal AI Assistant</title>
-<style>
-body{margin:0;background:#101522;color:#e9edf5;font-family:Arial,sans-serif;line-height:1.7}
-main{max-width:760px;margin:90px auto;padding:25px}
-h1{font-size:64px;color:#8bbcff;margin-bottom:5px}
-h2{color:#b7d2ff;margin-top:40px}
-p{font-size:18px;color:#c5cbd7}
-a{color:#8bbcff;text-decoration:none}
-a:hover{text-decoration:underline}
-footer{margin-top:70px;padding-top:20px;border-top:1px solid #354052}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f2">
+  <meta name="description" content="Binky is a private personal AI assistant designed to help you keep up with messages, plans and everyday commitments.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Binky — A little help. A clearer day.">
+  <meta property="og:description" content="A private personal AI assistant designed to make everyday information easier to manage.">
+  <meta property="og:url" content="https://binky-ai.co.uk/">
+  <link rel="canonical" href="https://binky-ai.co.uk/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%232F4F3E'/%3E%3Cpath d='M32 48V30C19 31 13 24 15 13c13-1 20 7 17 17 0-13 8-19 19-17 1 13-6 20-19 19' fill='%23E6EDE0'/%3E%3C/svg%3E">
+  <title>Binky — A little help. A clearer day.</title>
+  <style>
+    :root{
+      color-scheme:light;
+      --paper:#f7f8f2;
+      --paper-deep:#edf1e8;
+      --forest:#2f4f3e;
+      --ink:#20362b;
+      --moss:#69815e;
+      --sage:#a7b69a;
+      --muted:#52634f;
+      --line:#dce3d5;
+      --white:#fff;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--paper)}
+    body{margin:0;min-width:280px;color:var(--ink);background:var(--paper);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{width:min(100% - 112px,1200px);margin-inline:auto}
+    .site-header{position:sticky;top:0;z-index:4;border-bottom:1px solid rgba(220,227,213,.85);background:rgba(247,248,242,.92);backdrop-filter:blur(14px)}
+    .header-inner{min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .wordmark{display:inline-flex;align-items:center;gap:11px;color:var(--forest);font-size:35px;font-weight:650;letter-spacing:-1.8px;line-height:1}
+    .wordmark:hover{text-decoration:none}
+    .brand-icon{width:29px;height:33px;flex-shrink:0}
+    .nav{display:flex;align-items:center;gap:26px}
+    .nav a{color:var(--muted);font-size:13px;font-weight:500}
+    .nav .status{display:inline-flex;align-items:center;gap:9px;padding:10px 16px;border:1px solid #d5dfce;border-radius:100px;background:#edf1e8;color:var(--forest);font-size:12px;letter-spacing:.04em;white-space:nowrap}
+    .status::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--moss)}
+    .hero{min-height:680px;display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:26px;padding-block:76px 90px}
+    .eyebrow{margin:0 0 27px;color:var(--muted);font-size:12px;font-weight:500;letter-spacing:.15em;text-transform:uppercase}
+    h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(52px,6.5vw,88px);font-weight:400;letter-spacing:-.055em;line-height:1.12}
+    h1 span{display:block}
+    h1 span:last-child{color:var(--moss)}
+    .intro{max-width:510px;margin:30px 0 0;color:var(--muted);font-size:18px;line-height:1.8;text-wrap:pretty}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:31px}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:45px;padding:10px 17px;border:1px solid #c8d4c1;border-radius:100px;color:var(--forest);font-size:13px;font-weight:600}
+    .button.primary{border-color:var(--forest);background:var(--forest);color:var(--paper)}
+    .button:hover{text-decoration:none;filter:brightness(.98)}
+    .art{position:relative;width:100%;max-width:460px;margin:0;justify-self:end}
+    .art svg{display:block;width:100%;height:auto}
+    .principles{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .principle{padding:28px 30px;border-left:1px solid var(--line)}
+    .principle:first-child{border-left:0}
+    .principle strong{display:block;color:var(--forest);font-family:Georgia,"Times New Roman",serif;font-size:18px;font-weight:400}
+    .principle span{display:block;margin-top:6px;color:var(--muted);font-size:13px;line-height:1.55}
+    .section{padding-block:112px}
+    .section-heading{display:grid;grid-template-columns:.65fr 1.35fr;gap:60px;margin-bottom:48px}
+    .section-heading .eyebrow{margin:8px 0 0}
+    h2{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(36px,4.6vw,58px);font-weight:400;letter-spacing:-.045em;line-height:1.08}
+    .section-heading p:last-child{max-width:590px;margin:22px 0 0;color:var(--muted);font-size:17px;line-height:1.75}
+    .help-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .help-card{min-height:275px;padding:31px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.4)}
+    .card-number{color:#94a48d;font-size:12px;font-weight:600;letter-spacing:.08em}
+    .help-card h3{max-width:390px;margin:54px 0 12px;font-family:Georgia,"Times New Roman",serif;font-size:25px;font-weight:400}
+    .help-card p{max-width:500px;margin:0;color:var(--muted);font-size:15px;line-height:1.7}
+    .detail{display:block;margin-top:20px;color:#83927d;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+    .flow-section{border-block:1px solid var(--line);background:#f0f3eb}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--line)}
+    .step{padding:29px;background:var(--paper)}
+    .step span{display:grid;place-items:center;width:35px;height:35px;border:1px solid #c8d4c1;border-radius:50%;color:var(--moss);font-size:12px}
+    .step h3{margin:42px 0 9px;font-family:Georgia,"Times New Roman",serif;font-size:20px;font-weight:400}
+    .step p{margin:0;color:var(--muted);font-size:14px;line-height:1.65}
+    .now-next{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+    .phase{padding:35px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.32)}
+    .phase.current{background:#e6ede0}
+    .phase-label{display:inline-block;padding:6px 10px;border:1px solid #cad7c3;border-radius:100px;color:var(--forest);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+    .phase h3{margin:30px 0 18px;font-family:Georgia,"Times New Roman",serif;font-size:28px;font-weight:400}
+    .phase ul{margin:0;padding:0;list-style:none}
+    .phase li{position:relative;padding:12px 0 12px 26px;border-top:1px solid #d8e0d2;color:var(--muted);font-size:15px;line-height:1.5}
+    .phase li::before{content:"";position:absolute;left:2px;top:21px;width:7px;height:7px;border-radius:50%;background:#a4b19d}
+    .phase.current li::before{background:var(--forest)}
+    .privacy-panel{display:grid;grid-template-columns:1fr 1fr;gap:70px;padding:53px;border-radius:21px;background:var(--forest);color:#edf2e9}
+    .privacy-panel .eyebrow{color:#c5d0be}
+    .privacy-panel p{margin:0 0 20px;color:#d5ded0;font-size:16px;line-height:1.75}
+    .privacy-points{display:grid;gap:11px;margin:26px 0 0}
+    .privacy-points span{display:flex;align-items:center;gap:10px;color:#e1e8dc;font-size:14px}
+    .privacy-points i{display:grid;place-items:center;flex:0 0 auto;width:23px;height:23px;border-radius:50%;background:#456554;color:#e4ecdf;font-size:11px;font-style:normal}
+    .privacy-panel .button{border-color:#8ca086;color:#f3f6ef}
+    .closing{padding-block:112px;text-align:center}
+    .closing h2{max-width:850px;margin-inline:auto}
+    .closing p{max-width:650px;margin:25px auto 0;color:var(--muted);font-size:18px;line-height:1.75}
+    .closing .hero-actions{justify-content:center}
+    footer{border-top:1px solid var(--line)}
+    .footer-inner{min-height:90px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px 28px;color:var(--muted);font-size:12px;letter-spacing:.025em}
+    .footer-links{display:flex;flex-wrap:wrap;gap:22px}
+    @media(min-width:1500px){.wrap{width:min(100% - 160px,1280px)}h1{font-size:96px}}
+    @media(max-width:900px){
+      .nav a:not(.status){display:none}
+      .hero{grid-template-columns:1fr;gap:18px;padding-top:70px}
+      .art{width:min(74%,430px);justify-self:center}
+      .section-heading{grid-template-columns:1fr;gap:10px}
+      .steps{grid-template-columns:repeat(2,1fr)}
+      .privacy-panel{grid-template-columns:1fr;gap:28px}
+    }
+    @media(max-width:650px){
+      .wrap{width:calc(100% - 40px)}
+      .site-header{position:static}
+      .header-inner{min-height:75px}
+      .wordmark{font-size:31px}.brand-icon{width:25px;height:29px}
+      .status{padding:8px 12px!important;font-size:11px!important}
+      .hero{min-height:0;padding-block:55px 60px}
+      .eyebrow{margin-bottom:21px;font-size:11px}
+      h1{font-size:clamp(45px,13vw,68px)}
+      .intro{margin-top:23px;font-size:16px;line-height:1.75}
+      .art{width:min(82%,340px)}
+      .principles,.help-grid,.steps,.now-next{grid-template-columns:1fr}
+      .principle{border-left:0;border-top:1px solid var(--line)}
+      .principle:first-child{border-top:0}
+      .section{padding-block:76px}
+      .help-card{min-height:235px;padding:25px}
+      .help-card h3{margin-top:38px}
+      .privacy-panel{padding:31px 25px}
+      .closing{padding-block:78px}
+      .footer-inner{align-items:flex-start;flex-direction:column;padding-block:24px}
+    }
+    @media(max-width:360px){.wrap{width:calc(100% - 30px)}.status{display:none}.wordmark{font-size:29px}h1{font-size:42px}.intro{font-size:15px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
 </head>
 <body>
-<main>
-<h1>Binky</h1>
-<p><strong>A private, self-hosted personal AI assistant.</strong></p>
-<h2>About Binky</h2>
-<p>Binky is a personal artificial intelligence project designed to assist with everyday information, communication, scheduling and organisation.</p>
-<p>Binky uses locally operated AI infrastructure and can connect to authorised services such as Google Gmail, Contacts and Calendar.</p>
-<h2>Privacy by design</h2>
-<p>Binky is developed for personal use. Its conversational and connected-service information is managed within privately operated systems rather than published through this website.</p>
-<h2>Development</h2>
-<p>Binky is an independently developed personal AI project. Features and integrations are being developed incrementally.</p>
-<footer>
-<p><a href="privacy.html">Privacy Policy</a> &nbsp; | &nbsp; <a href="terms.html">Terms of Service</a></p>
-<p>Copyright 2026 Binky</p>
-</footer>
-</main>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="#top" aria-label="Binky home">
+        <svg class="brand-icon" viewBox="0 0 36 42" aria-hidden="true"><path d="M18 38V22" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M18 24C7 25 2 17 4 7c10-1 17 6 14 17Z" fill="#A7B69A"/><path d="M18 25C15 14 22 6 33 5c1 11-5 19-15 20Z" fill="currentColor"/></svg>
+        <span>binky</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation"><a href="#help">What Binky does</a><a href="#development">Development</a><a class="status" href="#development">Taking shape</a></nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="wrap hero">
+      <div class="copy">
+        <p class="eyebrow">Hello, we’re Binky.</p>
+        <h1><span>A little help.</span><span>A clearer day.</span></h1>
+        <p class="intro">A private personal AI assistant designed to keep up with messages, plans and everyday commitments—without asking you to remember every little detail.</p>
+        <div class="hero-actions"><a class="button primary" href="#help">See how Binky helps</a><a class="button" href="#development">Project status</a></div>
+      </div>
+      <figure class="art" aria-hidden="true">
+        <svg viewBox="0 0 460 460" xmlns="http://www.w3.org/2000/svg"><circle cx="230" cy="230" r="192" fill="#E6EDE0"/><circle cx="230" cy="230" r="214" fill="none" stroke="#DCE3D5"/><circle cx="362" cy="105" r="15" fill="#BECBAF"/><ellipse cx="232" cy="374" rx="83" ry="9" fill="#D3DECA"/><path d="M230 319C230 284 229 246 224 210" fill="none" stroke="#2F4F3E" stroke-width="7" stroke-linecap="round"/><path d="M227 275C154 275 122 226 132 153c68 1 117 45 95 122Z" fill="#2F4F3E"/><path d="M230 278C211 209 253 157 332 150c6 71-33 123-102 128Z" fill="#A7B69A"/><path d="M229 274C213 237 190 208 157 181" fill="none" stroke="#688467" stroke-width="1.5"/><path d="M232 274C251 234 278 203 309 176" fill="none" stroke="#D3DEC8" stroke-width="1.5"/><path d="M169 306h124l-11 42c-5 19-22 29-51 29s-46-10-51-29Z" fill="#91A581"/><rect x="164" y="296" width="134" height="18" rx="9" fill="#A7B69A"/><path d="M190 326l5 19" fill="none" stroke="#B3C1A6" stroke-width="3" stroke-linecap="round"/></svg>
+      </figure>
+    </section>
+
+    <section class="principles" aria-label="Binky principles">
+      <div class="principle"><strong>Private by design</strong><span>Built around privately operated storage and AI infrastructure.</span></div>
+      <div class="principle"><strong>Connected to the evidence</strong><span>Useful answers can remain linked to the messages and plans behind them.</span></div>
+      <div class="principle"><strong>Comfortable saying “I’m not sure”</strong><span>Binky can pause and ask a clear question instead of quietly guessing.</span></div>
+    </section>
+
+    <section class="wrap section" id="help">
+      <div class="section-heading"><p class="eyebrow">Everyday help</p><div><h2>Less searching. Fewer loose ends.</h2><p>Binky is being developed for the ordinary moments where information arrives in one place and becomes useful somewhere else.</p></div></div>
+      <div class="help-grid">
+        <article class="help-card"><span class="card-number">01</span><h3>Understand your correspondence</h3><p>Organise incoming messages, recognise useful subjects and make related information easier to find later.</p><span class="detail">Gmail · contacts · local catalogue</span></article>
+        <article class="help-card"><span class="card-number">02</span><h3>Keep plans in view</h3><p>Notice appointments, reservations, deliveries and informal arrangements, then connect them with the right date and context.</p><span class="detail">Calendar · events · reminders</span></article>
+        <article class="help-card"><span class="card-number">03</span><h3>Follow the whole thread</h3><p>Bring related messages and changes together, so the latest update makes sense without rereading an entire inbox.</p><span class="detail">Conversations · evidence · changes</span></article>
+        <article class="help-card"><span class="card-number">04</span><h3>Ask when something is unclear</h3><p>Offer a short explanation and useful choices when dates conflict, records look duplicated or an import needs attention.</p><span class="detail">Questions · review · safe decisions</span></article>
+      </div>
+    </section>
+
+    <section class="flow-section">
+      <div class="wrap section">
+        <div class="section-heading"><p class="eyebrow">How it works</p><div><h2>From new information to useful awareness.</h2><p>Binky keeps the original evidence, interprets what it may mean and avoids silently turning uncertainty into fact.</p></div></div>
+        <div class="steps"><article class="step"><span>1</span><h3>Collect</h3><p>Authorised services synchronise automatically.</p></article><article class="step"><span>2</span><h3>Understand</h3><p>Local AI helps classify information and recognise plans.</p></article><article class="step"><span>3</span><h3>Reconcile</h3><p>New evidence is compared with what Binky already knows.</p></article><article class="step"><span>4</span><h3>Help</h3><p>Binky answers, highlights, updates or asks you to decide.</p></article></div>
+      </div>
+    </section>
+
+    <section class="wrap section" id="development">
+      <div class="section-heading"><p class="eyebrow">Project status</p><div><h2>Working foundations, developed carefully.</h2><p>Binky is an independent experimental project. Features are added incrementally and tested before being trusted with unattended work.</p></div></div>
+      <div class="now-next">
+        <article class="phase current"><span class="phase-label">Available foundations</span><h3>What is working now</h3><ul><li>Private browser conversation</li><li>Authorised Gmail and Contacts collection</li><li>Google Calendar synchronisation</li><li>Local email classification and event processing</li><li>Self-hosted AI inference</li></ul></article>
+        <article class="phase"><span class="phase-label">In development</span><h3>What Binky is growing into</h3><ul><li>Clear daily and forthcoming-plan summaries</li><li>Simple anomaly and clarification decisions</li><li>Readable cross-message threads</li><li>More dependable event reconciliation</li><li>Additional communication sources after testing</li></ul></article>
+      </div>
+    </section>
+
+    <section class="wrap section" id="privacy">
+      <div class="privacy-panel"><div><p class="eyebrow">Privacy by design</p><h2>Personal information is not a public product.</h2></div><div><p>Binky’s private application, connected accounts and stored information are separate from this public website.</p><div class="privacy-points"><span><i>✓</i>No advertising use of connected-service data</span><span><i>✓</i>No Google user data used to train general-purpose models</span><span><i>✓</i>Authorised access can be revoked</span></div><div class="hero-actions"><a class="button" href="privacy.html">Read the privacy policy</a></div></div></div>
+    </section>
+
+    <section class="wrap closing"><p class="eyebrow">A quieter kind of assistant</p><h2>Technology that remembers the details without taking over.</h2><p>Binky is being built to reduce repeated administration, preserve context and keep its user in control of meaningful decisions.</p><div class="hero-actions"><a class="button primary" href="https://github.com/DaMooseEve/binky-site">View the project on GitHub</a></div></section>
+  </main>
+
+  <footer><div class="wrap footer-inner"><span>© 2026 Binky · Independent personal AI project</span><nav class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="#top">Back to top</a></nav></div></footer>
 </body>
 </html>
