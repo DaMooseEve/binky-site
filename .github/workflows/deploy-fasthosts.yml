@@ -1,5 +1,7 @@
 name: Deploy public website to Fasthosts
 
+# Repository variables keep deployment disabled until the Fasthosts account is ready.
+
 on:
   workflow_dispatch:
   push:
