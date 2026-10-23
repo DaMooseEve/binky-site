@@ -74,6 +74,14 @@
     .step span{display:grid;place-items:center;width:35px;height:35px;border:1px solid #c8d4c1;border-radius:50%;color:var(--moss);font-size:12px}
     .step h3{margin:42px 0 9px;font-family:Georgia,"Times New Roman",serif;font-size:20px;font-weight:400}
     .step p{margin:0;color:var(--muted);font-size:14px;line-height:1.65}
+    .ethos-section{border-block:1px solid var(--line);background:var(--paper-deep)}
+    .ethos-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .ethos-card{min-height:230px;padding:31px;border:1px solid #d4ddcd;border-radius:18px;background:rgba(255,255,255,.48)}
+    .ethos-card svg{width:29px;height:29px;color:var(--moss)}
+    .ethos-card h3{margin:37px 0 11px;font-family:Georgia,"Times New Roman",serif;font-size:24px;font-weight:400}
+    .ethos-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.7}
+    .ethos-quote{max-width:900px;margin:55px auto 0;text-align:center;color:var(--forest);font-family:Georgia,"Times New Roman",serif;font-size:clamp(27px,3.4vw,43px);font-weight:400;line-height:1.25}
+    .ethos-quote small{display:block;margin-top:17px;color:var(--muted);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
     .now-next{display:grid;grid-template-columns:1fr 1fr;gap:17px}
     .phase{padding:35px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.32)}
     .phase.current{background:#e6ede0}
@@ -117,7 +125,7 @@
       h1{font-size:clamp(45px,13vw,68px)}
       .intro{margin-top:23px;font-size:16px;line-height:1.75}
       .art{width:min(82%,340px)}
-      .principles,.help-grid,.steps,.now-next{grid-template-columns:1fr}
+      .principles,.help-grid,.steps,.now-next,.ethos-grid{grid-template-columns:1fr}
       .principle{border-left:0;border-top:1px solid var(--line)}
       .principle:first-child{border-top:0}
       .section{padding-block:76px}
@@ -138,7 +146,7 @@
         <svg class="brand-icon" viewBox="0 0 36 42" aria-hidden="true"><path d="M18 38V22" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M18 24C7 25 2 17 4 7c10-1 17 6 14 17Z" fill="#A7B69A"/><path d="M18 25C15 14 22 6 33 5c1 11-5 19-15 20Z" fill="currentColor"/></svg>
         <span>binky</span>
       </a>
-      <nav class="nav" aria-label="Main navigation"><a href="#help">How Binky helps</a><a href="#development">What is ready</a><a class="status" href="#development">Taking shape</a></nav>
+      <nav class="nav" aria-label="Main navigation"><a href="#help">How Binky helps</a><a href="#ethos">Why Binky</a><a href="#development">What is ready</a><a class="status" href="#development">Taking shape</a></nav>
     </div>
   </header>
 
@@ -156,7 +164,7 @@
     </section>
 
     <section class="principles" aria-label="Binky principles">
-      <div class="principle"><strong>Your information stays at home</strong><span>Binky keeps its saved copies and notes on the Binky computer installed in your home.</span></div>
+      <div class="principle"><strong>Your saved information stays at home</strong><span>Binky keeps its saved copies and notes on the Binky computer installed in your home.</span></div>
       <div class="principle"><strong>You can check its answers</strong><span>Binky can show you the message or plan that led to an answer.</span></div>
       <div class="principle"><strong>It can say “I’m not sure”</strong><span>When something is unclear, Binky asks a simple question instead of quietly guessing.</span></div>
     </section>
@@ -178,21 +186,34 @@
       </div>
     </section>
 
+    <section class="ethos-section" id="ethos">
+      <div class="wrap section">
+        <div class="section-heading"><p class="eyebrow">Made with less waste</p><div><h2>Helpful technology should be kinder to the world.</h2><p>Binky uses existing equipment carefully, keeps it useful for longer and powers its private AI systems with solar energy.</p></div></div>
+        <div class="ethos-grid">
+          <article class="ethos-card"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="6" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 2v4M16 26v4M2 16h4M26 16h4M6.1 6.1l2.8 2.8M23.1 23.1l2.8 2.8M25.9 6.1l-2.8 2.8M8.9 23.1l-2.8 2.8"/></g></svg><h3>Powered by the sun</h3><p>Binky’s AI servers run entirely on solar energy, either directly from the panels or from stored solar power.</p></article>
+          <article class="ethos-card"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 5h18a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 28h10M16 24v4M8 10h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><h3>A second life for good computers</h3><p>The Binky computer supplied for your home is an upcycled commercial PC. Every machine is checked, tested and fully configured before delivery.</p></article>
+          <article class="ethos-card"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 29s11-6.1 11-16V6l-11-3L5 6v7c0 9.9 11 16 11 16Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="m11 16 3 3 7-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>No unexpected repair bill</h3><p>The home computer remains Binky’s property. If it develops a fault, Binky supplies a replacement without charging you for the repair.</p></article>
+          <article class="ethos-card"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 14V9a7 7 0 0 1 14 0v5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="5" y="14" width="22" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="21" r="2" fill="currentColor"/></svg><h3>Private processing, without personal logs</h3><p>The solar-powered AI servers are kept in a secured area at Binky’s offices. They process encrypted requests but do not keep copies or logs of your personal information.</p></article>
+        </div>
+        <p class="ethos-quote">“Simple. Efficient. Not wasteful. We only have one world, and we should be kind to it.”<small>The Binky ethos</small></p>
+      </div>
+    </section>
+
     <section class="wrap section" id="development">
       <div class="section-heading"><p class="eyebrow">What is ready</p><div><h2>Built carefully, one useful step at a time.</h2><p>Binky is still being developed. Each new ability is tested carefully before Binky is allowed to use it on its own.</p></div></div>
       <div class="now-next">
-        <article class="phase current"><span class="phase-label">Working now</span><h3>What Binky can do today</h3><ul><li>Talk with you through a private web page</li><li>Read Gmail and Contacts when you give permission</li><li>Keep your Google Calendar up to date</li><li>Sort email and notice possible events</li><li>Do its thinking on the computer in your home</li></ul></article>
+        <article class="phase current"><span class="phase-label">Working now</span><h3>What Binky can do today</h3><ul><li>Talk with you through a private web page</li><li>Read Gmail and Contacts when you give permission</li><li>Keep your Google Calendar up to date</li><li>Sort email and notice possible events</li><li>Use Binky’s private AI servers when extra processing is needed</li></ul></article>
         <article class="phase"><span class="phase-label">Being prepared</span><h3>What comes next</h3><ul><li>Clear summaries of today and the days ahead</li><li>Simple choices when something looks wrong</li><li>Whole conversations shown in an easy order</li><li>More reliable diary updates</li><li>More ways to receive messages after careful testing</li></ul></article>
       </div>
     </section>
 
     <section class="wrap section" id="privacy">
-      <div class="privacy-panel"><div><p class="eyebrow">Your home. Your information.</p><h2>Binky keeps your private life private.</h2></div><div><p>The Binky computer is installed in your home. The copies it saves, the notes it makes and the work it does are kept there, rather than being sent away to a shared artificial-intelligence service.</p><p>Binky uses strong, practical protections: only approved people and services are allowed in, information is locked while it travels, and access can be withdrawn. No computer can honestly promise perfect security, but Binky is designed to keep your information as safe as reasonably possible.</p><div class="privacy-points"><span><i>✓</i>Your saved information stays on your Binky computer at home</span><span><i>✓</i>Your information is not sold or used for advertising</span><span><i>✓</i>Your Google information is not used to train public AI systems</span><span><i>✓</i>You can remove Binky’s permission to use a connected service</span></div><div class="hero-actions"><a class="button" href="privacy.html">Read the full privacy policy</a></div></div></div>
+      <div class="privacy-panel"><div><p class="eyebrow">Your home. Your information.</p><h2>Binky keeps your private life private.</h2></div><div><p>The Binky computer is installed in your home, where it keeps the copies and notes it saves for you. When extra AI processing is needed, an encrypted request travels to Binky’s privately operated servers rather than to a shared public AI service. Those servers do not retain your personal information.</p><p>Binky uses strong, practical protections: only approved people and services are allowed in, information is locked while it travels, and access can be withdrawn. No computer can honestly promise perfect security, but Binky is designed to keep your information as safe as reasonably possible.</p><div class="privacy-points"><span><i>✓</i>Your saved information stays on your Binky computer at home</span><span><i>✓</i>Private AI servers do not keep copies of your personal information</span><span><i>✓</i>Your information is not sold or used for advertising</span><span><i>✓</i>Your Google information is not used to train public AI systems</span><span><i>✓</i>You can remove Binky’s permission to use a connected service</span></div><div class="hero-actions"><a class="button" href="privacy.html">Read the full privacy policy</a></div></div></div>
     </section>
 
     <section class="wrap closing"><p class="eyebrow">A quieter kind of assistant</p><h2>A helpful memory for everyday life.</h2><p>Binky remembers useful details, keeps related things together and leaves important decisions with you.</p><div class="hero-actions"><a class="button primary" href="#top">Meet Binky again</a></div></section>
   </main>
 
-  <footer><div class="wrap footer-inner"><span>© 2026 Binky · Independent personal AI project</span><nav class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="#top">Back to top</a></nav></div></footer>
+  <footer><div class="wrap footer-inner"><span>© 2026 Binky · Simple, efficient and not wasteful</span><nav class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="#top">Back to top</a></nav></div></footer>
 </body>
 </html>
