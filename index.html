@@ -96,6 +96,10 @@
     .phase li{position:relative;padding:12px 0 12px 26px;border-top:1px solid #d8e0d2;color:var(--muted);font-size:15px;line-height:1.5}
     .phase li::before{content:"";position:absolute;left:2px;top:21px;width:7px;height:7px;border-radius:50%;background:#a4b19d}
     .phase.current li::before{background:var(--forest)}
+    .connection-note{display:grid;grid-template-columns:.65fr 1.35fr;gap:60px;margin-top:17px;padding:35px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.42)}
+    .connection-note .phase-label{align-self:start;justify-self:start}
+    .connection-note h3{margin:0 0 12px;font-family:Georgia,"Times New Roman",serif;font-size:28px;font-weight:400}
+    .connection-note p{max-width:650px;margin:0;color:var(--muted);font-size:15px;line-height:1.7}
     .privacy-panel{display:grid;grid-template-columns:1fr 1fr;gap:70px;padding:53px;border-radius:21px;background:var(--forest);color:#edf2e9}
     .privacy-panel .eyebrow{color:#c5d0be}
     .privacy-panel p{margin:0 0 20px;color:#d5ded0;font-size:16px;line-height:1.75}
@@ -117,6 +121,7 @@
       .art{width:min(74%,430px);justify-self:center}
       .section-heading{grid-template-columns:1fr;gap:10px}
       .origin-story{grid-template-columns:1fr;gap:20px}
+      .connection-note{grid-template-columns:1fr;gap:24px}
       .steps{grid-template-columns:repeat(2,1fr)}
       .privacy-panel{grid-template-columns:1fr;gap:28px}
     }
@@ -136,6 +141,7 @@
       .principle:first-child{border-top:0}
       .section{padding-block:76px}
       .origin-story{margin-bottom:60px;padding:33px 25px}
+      .connection-note{padding:29px 25px}
       .help-card{min-height:235px;padding:25px}
       .help-card h3{margin-top:38px}
       .privacy-panel{padding:31px 25px}
@@ -214,8 +220,9 @@
       <div class="section-heading"><p class="eyebrow">What is ready</p><div><h2>Built carefully, one useful step at a time.</h2><p>Binky is still being developed. Each new ability is tested carefully before Binky is allowed to use it on its own.</p></div></div>
       <div class="now-next">
         <article class="phase current"><span class="phase-label">Working now</span><h3>What Binky can do today</h3><ul><li>Talk with you through a private web page</li><li>Read Gmail and Contacts when you give permission</li><li>Include forwarded copies of SMS and WhatsApp messages</li><li>Keep your Google Calendar up to date</li><li>Sort messages and notice possible events</li><li>Use Binky’s private AI servers when extra processing is needed</li></ul></article>
-        <article class="phase"><span class="phase-label">Being prepared</span><h3>What comes next</h3><ul><li>Clear summaries of today and the days ahead</li><li>Simple choices when something looks wrong</li><li>Whole conversations shown in an easy order</li><li>More reliable diary updates</li><li>More ways to receive messages after careful testing</li></ul></article>
+        <article class="phase"><span class="phase-label">Being prepared</span><h3>What comes next</h3><ul><li>Clear summaries of today and the days ahead</li><li>Simple choices when something looks wrong</li><li>Whole conversations shown in an easy order</li><li>More reliable diary updates</li><li>Secure access to your home Binky when you are away</li><li>More ways to receive messages after careful testing</li></ul></article>
       </div>
+      <aside class="connection-note" aria-labelledby="connection-title"><span class="phase-label">Binky Connect · Being prepared</span><div><h3 id="connection-title">Secure access wherever you are</h3><p>Binky is developing its own private, encrypted connection between you, your home computer and Binky’s AI servers. This will let you use Binky away from home without opening your home network to the public internet.</p></div></aside>
     </section>
 
     <section class="wrap section" id="privacy">
