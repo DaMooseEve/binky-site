@@ -29,7 +29,7 @@ jobs:
 
       - name: Upload the static pages using encrypted FTP
         env:
-          FTP_SERVER: ${{ vars.FASTHOSTS_FTP_SERVER || 'ftp.binky-ai.co.uk' }}
+          FTP_SERVER: ${{ vars.FASTHOSTS_FTP_SERVER || 'ftp.fasthosts.co.uk' }}
           FTP_DIRECTORY: ${{ vars.FASTHOSTS_FTP_DIRECTORY || '/htdocs/' }}
           FTP_USERNAME: ${{ secrets.FASTHOSTS_FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FASTHOSTS_FTP_PASSWORD }}

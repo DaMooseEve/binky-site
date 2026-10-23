@@ -9,9 +9,8 @@ HTML pages over encrypted FTP whenever an approved change reaches `main`.
    `binky-ai.co.uk`.
 2. Open its FTP accounts or file transfer settings.
 3. Create a dedicated deployment account with access only to this website.
-4. Record its FTP username, password, server name and web-root folder. The
-   expected server is `ftp.binky-ai.co.uk`; the usual web root is `/htdocs/`,
-   but use the folder shown by Fasthosts.
+4. Record its FTP username and password. The Fasthosts settings for this site
+   show the server as `ftp.fasthosts.co.uk` and the web root as `/htdocs/`.
 
 ## One-time GitHub setup
 
@@ -24,8 +23,8 @@ Add these **repository secrets**:
 
 Add these **repository variables**:
 
-- `FASTHOSTS_FTP_SERVER` — normally `ftp.binky-ai.co.uk`
-- `FASTHOSTS_FTP_DIRECTORY` — normally `/htdocs/`
+- `FASTHOSTS_FTP_SERVER` — `ftp.fasthosts.co.uk`
+- `FASTHOSTS_FTP_DIRECTORY` — `/htdocs/`
 - `FASTHOSTS_DEPLOY_ENABLED` — set to `true` only after checking the directory
 
 Never commit the FTP password to this repository.
