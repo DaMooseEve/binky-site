@@ -1,0 +1,62 @@
+name: Deploy public website to Fasthosts
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - index.html
+      - privacy.html
+      - terms.html
+      - .github/workflows/deploy-fasthosts.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: binky-public-website
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: ${{ vars.FASTHOSTS_DEPLOY_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the approved website
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Upload the static pages using encrypted FTP
+        env:
+          FTP_SERVER: ${{ vars.FASTHOSTS_FTP_SERVER || 'ftp.binky-ai.co.uk' }}
+          FTP_DIRECTORY: ${{ vars.FASTHOSTS_FTP_DIRECTORY || '/htdocs/' }}
+          FTP_USERNAME: ${{ secrets.FASTHOSTS_FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FASTHOSTS_FTP_PASSWORD }}
+        run: |
+          set -euo pipefail
+          : "${FTP_USERNAME:?Add the FASTHOSTS_FTP_USERNAME repository secret}"
+          : "${FTP_PASSWORD:?Add the FASTHOSTS_FTP_PASSWORD repository secret}"
+          case "$FTP_DIRECTORY" in
+            */) ;;
+            *) FTP_DIRECTORY="${FTP_DIRECTORY}/" ;;
+          esac
+          for page in index.html privacy.html terms.html; do
+            curl --fail --silent --show-error --ftp-ssl-reqd \
+              --user "${FTP_USERNAME}:${FTP_PASSWORD}" \
+              --upload-file "$page" \
+              "ftp://${FTP_SERVER}${FTP_DIRECTORY}${page}"
+          done
+
+      - name: Confirm the public website
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 5 --retry-delay 3 \
+            "https://binky-ai.co.uk/?deployment=${GITHUB_SHA}" \
+            | grep -F "A little help. A clearer day."
+          curl --fail --silent --show-error --retry 5 --retry-delay 3 \
+            "https://binky-ai.co.uk/privacy.html?deployment=${GITHUB_SHA}" \
+            | grep -F "Privacy Policy"
+          curl --fail --silent --show-error --retry 5 --retry-delay 3 \
+            "https://binky-ai.co.uk/terms.html?deployment=${GITHUB_SHA}" \
+            | grep -F "Terms of Service"
