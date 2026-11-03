@@ -11,6 +11,8 @@ on:
       - index.html
       - privacy.html
       - terms.html
+      - technical.html
+      - signin.html
       - .github/workflows/deploy-fasthosts.yml
 
 permissions:
@@ -43,7 +45,7 @@ jobs:
             */) ;;
             *) FTP_DIRECTORY="${FTP_DIRECTORY}/" ;;
           esac
-          for page in index.html privacy.html terms.html; do
+          for page in index.html privacy.html terms.html technical.html signin.html; do
             curl --fail --silent --show-error --ftp-ssl-reqd \
               --user "${FTP_USERNAME}:${FTP_PASSWORD}" \
               --upload-file "$page" \
@@ -62,3 +64,10 @@ jobs:
           curl --fail --silent --show-error --retry 5 --retry-delay 3 \
             "https://binky-ai.co.uk/terms.html?deployment=${GITHUB_SHA}" \
             | grep -F "Terms of Service"
+
+          curl --fail --silent --show-error --retry 5 --retry-delay 3 \
+            "https://binky-ai.co.uk/technical.html?deployment=${GITHUB_SHA}" \
+            | grep -F "A closer look at Binky"
+          curl --fail --silent --show-error --retry 5 --retry-delay 3 \
+            "https://binky-ai.co.uk/signin.html?deployment=${GITHUB_SHA}" \
+            | grep -F "Sign in to Binky"

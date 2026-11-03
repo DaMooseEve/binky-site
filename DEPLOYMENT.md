@@ -1,6 +1,6 @@
 # Publishing binky-ai.co.uk
 
-The public site is hosted by Fasthosts. GitHub Actions uploads the three static
+The public site is hosted by Fasthosts. GitHub Actions uploads the five static
 HTML pages over encrypted FTP whenever an approved change reaches `main`.
 
 ## One-time Fasthosts setup
@@ -31,9 +31,13 @@ Never commit the FTP password to this repository.
 
 ## Publishing and rollback
 
-The workflow runs automatically when one of the three HTML pages changes on
+The workflow runs automatically when one of the five HTML pages changes on
 `main`. It can also be run from **Actions → Deploy public website to Fasthosts
 → Run workflow**.
 
 To roll back, revert the website commit on `main` or run the workflow from a
 commit containing the earlier pages.
+
+The public sign-in entry links to a separate authenticated diagnostics service.
+Deploy its live DNS/TLS first; never upload its code, records, invitation files or
+credentials to this public repository or web root.
