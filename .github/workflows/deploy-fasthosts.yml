@@ -14,7 +14,7 @@ on:
       - technical.html
       - signin.html
       - install.html
-      - Binky-Connect-*.apk*
+      - Binky-Connect-*
       - .github/workflows/deploy-fasthosts.yml
 
 permissions:
@@ -47,7 +47,7 @@ jobs:
             */) ;;
             *) FTP_DIRECTORY="${FTP_DIRECTORY}/" ;;
           esac
-          for page in index.html privacy.html terms.html technical.html signin.html install.html Binky-Connect-0.3.8.apk Binky-Connect-0.3.8.apk.sha256; do
+          for page in index.html privacy.html terms.html technical.html signin.html install.html Binky-Connect-0.3.8.apk Binky-Connect-0.3.8.sha256.txt; do
             echo "Uploading ${page}"
             curl --fail --silent --show-error --ftp-ssl-reqd \
               --user "${FTP_USERNAME}:${FTP_PASSWORD}" \
@@ -81,6 +81,6 @@ jobs:
           curl --fail --silent --show-error --retry 5 --retry-delay 3 \
             "https://binky-ai.co.uk/Binky-Connect-0.3.8.apk?deployment=${GITHUB_SHA}" \
             --output /tmp/binky-connect-download.apk
-          EXPECTED_APK_SHA=$(cut -d ' ' -f 1 Binky-Connect-0.3.8.apk.sha256)
+          EXPECTED_APK_SHA=$(cut -d ' ' -f 1 Binky-Connect-0.3.8.sha256.txt)
           ACTUAL_APK_SHA=$(sha256sum /tmp/binky-connect-download.apk | cut -d ' ' -f 1)
           test "$ACTUAL_APK_SHA" = "$EXPECTED_APK_SHA"

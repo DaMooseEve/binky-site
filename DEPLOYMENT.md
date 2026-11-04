@@ -60,3 +60,6 @@ create the downloads subdirectory (first run failed curl9 after all six pages
 uploaded). Versioned public APK/checksum files therefore live in the web root.
 Keep this flat layout unless directory creation is independently enabled. The
 failed CI run41868670625 is retained; no hosting credentials were changed.
+
+Checksum filename ends in `.sha256.txt` so the host serves it as plain text;
+the earlier `.apk.sha256` inherited the APK MIME type. APK bytes are unchanged.
