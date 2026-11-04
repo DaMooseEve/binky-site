@@ -13,6 +13,8 @@ on:
       - terms.html
       - technical.html
       - signin.html
+      - install.html
+      - downloads/**
       - .github/workflows/deploy-fasthosts.yml
 
 permissions:
@@ -45,10 +47,10 @@ jobs:
             */) ;;
             *) FTP_DIRECTORY="${FTP_DIRECTORY}/" ;;
           esac
-          for page in index.html privacy.html terms.html technical.html signin.html; do
+          for page in index.html privacy.html terms.html technical.html signin.html install.html downloads/Binky-Connect-0.3.8.apk downloads/Binky-Connect-0.3.8.apk.sha256; do
             curl --fail --silent --show-error --ftp-ssl-reqd \
               --user "${FTP_USERNAME}:${FTP_PASSWORD}" \
-              --upload-file "$page" \
+              --ftp-create-dirs --upload-file "$page" \
               "ftp://${FTP_SERVER}${FTP_DIRECTORY}${page}"
           done
 
@@ -71,3 +73,13 @@ jobs:
           curl --fail --silent --show-error --retry 5 --retry-delay 3 \
             "https://binky-ai.co.uk/signin.html?deployment=${GITHUB_SHA}" \
             | grep -F "Sign in to Binky"
+
+          curl --fail --silent --show-error --retry 5 --retry-delay 3 \
+            "https://binky-ai.co.uk/install.html?deployment=${GITHUB_SHA}" \
+            | grep -F "Download Binky Connect for Android"
+          curl --fail --silent --show-error --retry 5 --retry-delay 3 \
+            "https://binky-ai.co.uk/downloads/Binky-Connect-0.3.8.apk?deployment=${GITHUB_SHA}" \
+            --output /tmp/binky-connect-download.apk
+          EXPECTED_APK_SHA=$(cut -d ' ' -f 1 downloads/Binky-Connect-0.3.8.apk.sha256)
+          ACTUAL_APK_SHA=$(sha256sum /tmp/binky-connect-download.apk | cut -d ' ' -f 1)
+          test "$ACTUAL_APK_SHA" = "$EXPECTED_APK_SHA"

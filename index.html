@@ -116,7 +116,7 @@
     .footer-links{display:flex;flex-wrap:wrap;gap:22px}
     @media(min-width:1500px){.wrap{width:min(100% - 160px,1280px)}h1{font-size:96px}}
     @media(max-width:900px){
-      .nav a:not(.status):not(.signin){display:none}
+      .nav a:not(.status):not(.signin):not(.install){display:none}
       .hero{grid-template-columns:1fr;gap:18px;padding-top:70px}
       .art{width:min(74%,430px);justify-self:center}
       .section-heading{grid-template-columns:1fr;gap:10px}
@@ -150,6 +150,8 @@
       .footer-inner{align-items:flex-start;flex-direction:column;padding-block:24px}
     }
     @media(max-width:360px){.wrap{width:calc(100% - 30px)}.status{display:none}.wordmark{font-size:29px}h1{font-size:42px}.intro{font-size:15px}}
+    .install-short{display:none}
+    @media(max-width:1100px){.nav{gap:12px}.nav a:not(.status):not(.signin):not(.install){display:none}.install-long{display:none}.install-short{display:inline}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
 </head>
@@ -160,7 +162,7 @@
         <svg class="brand-icon" viewBox="0 0 36 42" aria-hidden="true"><path d="M18 38V22" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M18 24C7 25 2 17 4 7c10-1 17 6 14 17Z" fill="#A7B69A"/><path d="M18 25C15 14 22 6 33 5c1 11-5 19-15 20Z" fill="currentColor"/></svg>
         <span>binky</span>
       </a>
-      <nav class="nav" aria-label="Main navigation"><a href="#help">How Binky helps</a><a href="#ethos">Why Binky</a><a href="#development">What is ready</a><a href="technical.html">Technical overview</a><a class="signin button" href="signin.html">Sign in</a><a class="status" href="#development">In real-world testing</a></nav>
+      <nav class="nav" aria-label="Main navigation"><a href="#help">How Binky helps</a><a href="#ethos">Why Binky</a><a href="#development">What is ready</a><a href="technical.html">Technical overview</a><a class="install button" href="install.html" aria-label="Install Binky Connect"><span class="install-long">Install Binky Connect</span><span class="install-short">Install</span></a><a class="signin button" href="signin.html">Sign in</a><a class="status" href="#development">In real-world testing</a></nav>
     </div>
   </header>
 
@@ -170,7 +172,7 @@
         <p class="eyebrow">Hello, we’re Binky.</p>
         <h1><span>A little help.</span><span>A clearer day.</span></h1>
         <p class="intro">Binky is a helpful computer that lives in your home. It keeps track of messages, plans and everyday commitments, so you do not have to remember every little detail.</p>
-        <div class="hero-actions"><a class="button primary" href="#help">See how Binky helps</a><a class="button" href="#privacy">How Binky protects you</a></div>
+        <div class="hero-actions"><a class="button primary" href="#help">See how Binky helps</a><a class="button" href="#privacy">How Binky protects you</a><a class="button" href="install.html">Install Binky Connect</a></div>
       </div>
       <figure class="art" aria-hidden="true">
         <svg viewBox="0 0 460 460" xmlns="http://www.w3.org/2000/svg"><circle cx="230" cy="230" r="192" fill="#E6EDE0"/><circle cx="230" cy="230" r="214" fill="none" stroke="#DCE3D5"/><circle cx="362" cy="105" r="15" fill="#BECBAF"/><ellipse cx="232" cy="374" rx="83" ry="9" fill="#D3DECA"/><path d="M230 319C230 284 229 246 224 210" fill="none" stroke="#2F4F3E" stroke-width="7" stroke-linecap="round"/><path d="M227 275C154 275 122 226 132 153c68 1 117 45 95 122Z" fill="#2F4F3E"/><path d="M230 278C211 209 253 157 332 150c6 71-33 123-102 128Z" fill="#A7B69A"/><path d="M229 274C213 237 190 208 157 181" fill="none" stroke="#688467" stroke-width="1.5"/><path d="M232 274C251 234 278 203 309 176" fill="none" stroke="#D3DEC8" stroke-width="1.5"/><path d="M169 306h124l-11 42c-5 19-22 29-51 29s-46-10-51-29Z" fill="#91A581"/><rect x="164" y="296" width="134" height="18" rx="9" fill="#A7B69A"/><path d="M190 326l5 19" fill="none" stroke="#B3C1A6" stroke-width="3" stroke-linecap="round"/></svg>
@@ -220,11 +222,11 @@
     <section class="wrap section" id="development">
       <div class="section-heading"><p class="eyebrow">What is ready</p><div><h2>Built carefully, one useful step at a time.</h2><p>Binky is now being tested through a fresh home installation, connected services and an Android phone. It remains a development prototype, with coverage, reliability and clarity being checked using real everyday questions.</p></div></div>
       <div class="now-next">
-        <article class="phase current"><span class="phase-label">Working now</span><h3>What Binky can do today</h3><ul><li>Use a private web interface from supported devices</li><li>Set up a fresh profile and connect Google with your permission</li><li>Receive SMS and supported Android message notifications</li><li>Search retained records by dates, people, topics and conversations</li><li>Keep source evidence behind answers and diary entries</li><li>Use the tested Binky Connect phone and private AI connections</li></ul></article>
-        <article class="phase"><span class="phase-label">Being prepared</span><h3>What comes next</h3><ul><li>Clearer, more natural answers and daily summaries</li><li>More complete backfill, classification and search coverage</li><li>Better handling of ambiguous dates and changing arrangements</li><li>Central error reporting and a secure diagnostics viewer</li><li>Browser-first account access beyond the current phone prototype</li><li>More source integrations and historical message options</li></ul></article>
+        <article class="phase current"><span class="phase-label">Working now</span><h3>What Binky can do today</h3><ul><li>Use a private web interface from supported devices</li><li>Set up a fresh profile and connect Google with your permission</li><li>Receive SMS and supported Android message notifications</li><li>Search retained records by dates, people, topics and conversations</li><li>Keep source evidence behind answers and diary entries</li><li>Use the tested Binky Connect phone and private AI connections</li><li>Central error reporting and a secure diagnostics viewer</li></ul></article>
+        <article class="phase"><span class="phase-label">Being prepared</span><h3>What comes next</h3><ul><li>Clearer, more natural answers and daily summaries</li><li>More complete backfill, classification and search coverage</li><li>Better handling of ambiguous dates and changing arrangements</li><li>Browser-first account access beyond the current phone prototype</li><li>More source integrations and historical message options</li></ul></article>
       </div>
       <aside class="connection-note" aria-labelledby="connection-title"><span class="phase-label">Binky Connect · Working prototype</span><div><h3 id="connection-title">Secure access wherever you are</h3><p>The Android Binky Connect app now connects privately to the home installation, and the home computer connects to Binky’s AI servers. Fresh-device pairing has been tested. Broader browser-only account access and recovery are still being built.</p></div></aside>
-      <p>Development update: 3 November 2026. WhatsApp and Messenger currently use captured Android notifications, not a full historical chat download. <a href="technical.html">Read about coverage and the technical design.</a></p>
+      <p>Development update: 4 November 2026. WhatsApp and Messenger currently use captured Android notifications, not a full historical chat download. <a href="technical.html">Read about coverage and the technical design.</a></p>
     </section>
 
     <section class="wrap section" id="privacy">
@@ -234,6 +236,6 @@
     <section class="wrap closing"><p class="eyebrow">A quieter kind of assistant</p><h2>A helpful memory for everyday life.</h2><p>Binky remembers useful details, keeps related things together and leaves important decisions with you.</p><div class="hero-actions"><a class="button primary" href="#top">Meet Binky again</a></div></section>
   </main>
 
-  <footer><div class="wrap footer-inner"><span>© 2026 Binky · Simple, efficient and not wasteful</span><nav class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="technical.html">Technical overview</a><a href="signin.html">Sign in</a><a href="#top">Back to top</a></nav></div></footer>
+  <footer><div class="wrap footer-inner"><span>© 2026 Binky · Simple, efficient and not wasteful</span><nav class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="technical.html">Technical overview</a><a href="install.html">Install Binky Connect</a><a href="signin.html">Sign in</a><a href="#top">Back to top</a></nav></div></footer>
 </body>
 </html>
