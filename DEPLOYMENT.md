@@ -54,3 +54,9 @@ pairing profile or installation credentials. Windows/iOS installers and remote
 browser account access are explicitly unfinished. Local HTML links and desktop/
 390px browser layout checks pass; the workflow checks the public APK hash after
 upload. Keep the diagnostics sign-in separate from customer Binky access.
+
+The dedicated hosting FTP account can upload to the existing web root but cannot
+create the downloads subdirectory (first run failed curl9 after all six pages
+uploaded). Versioned public APK/checksum files therefore live in the web root.
+Keep this flat layout unless directory creation is independently enabled. The
+failed CI run41868670625 is retained; no hosting credentials were changed.
