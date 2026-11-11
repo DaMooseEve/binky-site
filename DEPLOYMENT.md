@@ -63,3 +63,11 @@ failed CI run41868670625 is retained; no hosting credentials were changed.
 
 Checksum filename ends in `.sha256.txt` so the host serves it as plain text;
 the earlier `.apk.sha256` inherited the APK MIME type. APK bytes are unchanged.
+
+11 November: a separate0.3.9/code15 history-test APK is available beside the
+existing0.3.8 download. It uses the same signing certificate and contains no
+pairing profile or account credentials. Its matching private server/pairing and
+history coverage are laboratory tests; the page does not present them as complete.
+The hosting workflow uploads/verifies both versioned APKs and plain-text checksums.
+SHA2560.3.9:b0839cac1f45591db1fbdec8a611b158f6d04acefd47cb04b7538735ad1be470.
+This HTTPS download replaces reliance on a home-LAN HTTP link for test updates.
