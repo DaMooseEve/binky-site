@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Install Binky Connect for Android or Windows and check current iPhone access options.">
+<meta name="description" content="Install Binky Connect for Android, Windows or Linux and check current iPhone access options.">
 <title>Install Binky Connect | Binky</title><style>body{margin:0;background:#f7f8f2;color:#20362b;font:17px/1.75 system-ui,sans-serif}main{max-width:900px;margin:auto;padding:45px 24px}nav{display:flex;gap:24px;flex-wrap:wrap;border-bottom:1px solid #dce3d5;padding-bottom:18px}a{color:#2f4f3e}h1,h2{font-family:Georgia,serif;line-height:1.2;font-weight:400}h1{font-size:48px}h2{margin-top:40px;font-size:29px}.note{padding:18px;border-left:4px solid #69815e;background:#edf1e8}.button{display:inline-block;padding:12px 22px;background:#2f4f3e;color:white;border-radius:24px;text-decoration:none}table{border-collapse:collapse;width:100%;font-size:15px}td,th{padding:12px;border-bottom:1px solid #dce3d5;text-align:left;vertical-align:top}footer{margin-top:40px;border-top:1px solid #dce3d5;padding-top:20px;font-size:14px}a:focus-visible{outline:3px solid #69815e;outline-offset:4px}@media(max-width:600px){h1{font-size:36px}table{font-size:13px}td,th{padding:8px}} .platform{padding:20px 24px;border:1px solid #dce3d5;border-radius:18px;margin:24px 0;background:white}.platform h2{margin-top:0}.badge{font-size:14px;color:#526946}code{overflow-wrap:anywhere;font-size:13px}li{margin:10px 0}.platform-nav{display:flex;flex-wrap:wrap;gap:24px}.download-note{font-size:14px}details{margin-top:20px}</style></head>
 <body><main>
 <nav aria-label="Main navigation"><a href="index.html">Binky home</a><a href="technical.html">Technical overview</a><a href="install.html" aria-current="page">Install Binky Connect</a><a href="signin.html">Sign in</a></nav>
 <h1>Install Binky Connect</h1>
 <p>Connect your device to your Binky computer. Choose your device below to see what is available.</p>
-<p class="note">Binky is in real-world testing. Android and Windows test apps are available below. You need a configured Binky computer to complete pairing. iPhone installation is still being prepared.</p>
-<div class="platform-nav" aria-label="Choose your device"><a href="#android">Android</a><a href="#windows">Windows</a><a href="#iphone">iPhone and iPad</a></div>
+<p class="note">Binky is in real-world testing. Android, Windows and Linux test apps are available below. You need a configured Binky computer to complete pairing. iPhone installation is still being prepared.</p>
+<div class="platform-nav" aria-label="Choose your device"><a href="#android">Android</a><a href="#windows">Windows</a><a href="#linux">Linux</a><a href="#iphone">iPhone and iPad</a></div>
 <section id="android" class="platform" aria-labelledby="android-title"><h2 id="android-title">Android</h2>
 <p class="badge">Available test release · Version 0.3.14 · Android 8 or later</p>
 <p>The signed Android app provides private voice access, supported message capture and an embedded Binky control panel for search, diary entries and saved sources.</p>
@@ -36,6 +36,17 @@
 <ol><li>Download and open the installer. This test release is unsigned, so Windows may show an unknown-publisher warning.</li><li>Open <strong>Binky Connect</strong> and choose <strong>Pair my Binky</strong>.</li><li>Give the displayed approval code to your Binky operator. Access begins only after they approve this laptop.</li><li>When the status reads <strong>Connected privately</strong>, choose <strong>Open Binky</strong>.</li></ol>
 <p>The download contains no account credentials or private pairing profile. It connects your browser to Binky; it does not import messages from your laptop. The server-side Windows connection service must be configured on your Binky.</p>
 <details><summary>Verify the Windows download</summary><p>SHA-256:</p><code>7617d736d47285659419d58175afa94ac932803f616b0af157573bc4385fa4ae</code><p>This checksum verifies the downloaded bytes. The installer does not yet have a commercial publisher signature.</p></details>
+</section>
+<section id="linux" class="platform" aria-labelledby="linux-title"><h2 id="linux-title">Linux</h2>
+<p class="badge">Linux desktop test release · Version 0.1.0 · 64-bit x86</p>
+<p>Use Binky in your normal browser, at home or away. The installer adds Binky Connect to your application menu and starts its connection service when you sign into your Linux desktop.</p>
+<p><a class="button" href="Binky-Connect-Linux-0.1.0-x86_64.run" download>Download Binky Connect for Linux</a></p>
+<p class="download-note">Linux installer · 4.0 MiB · <a href="Binky-Connect-Linux-0.1.0-x86_64.run.sha256.txt">Download checksum</a></p>
+<p>Requires Python 3.9 or later, systemd user services, CA certificates and a default browser. Initially tested on Ubuntu; intended for Ubuntu and Debian desktops. ARM and distributions without systemd are not supported by this installer.</p>
+<ol><li>Download the installer, then open a terminal and run the command below as your normal desktop user, without sudo.</li><li>Open <strong>Binky Connect</strong> from your application menu and choose <strong>Pair my Binky</strong>.</li><li>Give the displayed approval code to your Binky operator. When approved, choose <strong>Check connection</strong>, then <strong>Open Binky</strong>.</li><li>Sign into your own Binky account. For a separate private account, use your administrator’s one-time invitation.</li></ol>
+<p><code>sh ~/Downloads/Binky-Connect-Linux-0.1.0-x86_64.run</code></p>
+<p>Keep Binky Connect running while you use Binky. Each computer creates its own private connection; the download contains no credentials. Reinstalling preserves the existing pairing. This release provides browser access and does not import messages or provide voice input.</p>
+<details><summary>Verify the Linux download</summary><p>SHA-256:</p><code>3d51be17d7d75cefcf275e1ea1e631768c5568a6dd9b0693298d34d5724b28e8</code><p>This is an unsigned test installer. The checksum verifies the downloaded bytes.</p></details>
 </section>
 <section id="iphone" class="platform" aria-labelledby="iphone-title"><h2 id="iphone-title">iPhone and iPad</h2>
 <p class="badge">App and remote browser access in preparation</p><p>The local Binky web interface can be used on the same home network. An iOS app and browser sign-in away from home are not available yet.</p><p>Android notification capture does not establish equivalent iPhone message access.</p></section>

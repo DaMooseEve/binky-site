@@ -71,3 +71,14 @@ history coverage are laboratory tests; the page does not present them as complet
 The hosting workflow uploads/verifies both versioned APKs and plain-text checksums.
 SHA2560.3.9:b0839cac1f45591db1fbdec8a611b158f6d04acefd47cb04b7538735ad1be470.
 This HTTPS download replaces reliance on a home-LAN HTTP link for test updates.
+
+19 November 2026: Linux desktop Connect 0.1.0 is published as a per-user
+self-extracting .run installer and plain-text checksum alongside Windows and
+Android. It requires Python 3.9+, a systemd desktop login and x86-64 Linux.
+Source c33c0b2 in Binky-connect includes the release builder and bundled notices.
+Native Acer installation, private public-gateway pairing, account sign-in page
+and identity-preserving reinstallation passed. The existing retired processing
+services stay unchanged. The installer starts only binky-desktop-connect.service
+for the desktop user. Pairing identities and account credentials are generated
+or entered separately; they are never packaged. The workflow uploads and hashes
+the Linux installer through the same encrypted FTP deployment.

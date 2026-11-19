@@ -47,7 +47,7 @@ jobs:
             */) ;;
             *) FTP_DIRECTORY="${FTP_DIRECTORY}/" ;;
           esac
-          for page in Binky-Connect-0.3.14.apk Binky-Connect-0.3.14.sha256.txt Binky-Connect-0.3.12.apk Binky-Connect-0.3.12.sha256.txt index.html privacy.html terms.html technical.html signin.html install.html Binky-Connect-0.3.8.apk Binky-Connect-0.3.8.sha256.txt Binky-Connect-0.3.9.apk Binky-Connect-0.3.9.sha256.txt Binky-Connect-0.3.10.apk Binky-Connect-0.3.10.sha256.txt Binky-Connect-0.3.11.apk Binky-Connect-0.3.11.sha256.txt Binky-Connect-Windows-0.1.0-x64-Setup.exe Binky-Connect-Windows-0.1.0-x64-Setup.exe.sha256.txt Binky-Connect-Windows-0.1.1-x64-Setup.exe Binky-Connect-Windows-0.1.1-x64-Setup.exe.sha256.txt; do
+          for page in Binky-Connect-Linux-0.1.0-x86_64.run Binky-Connect-Linux-0.1.0-x86_64.run.sha256.txt Binky-Connect-0.3.14.apk Binky-Connect-0.3.14.sha256.txt Binky-Connect-0.3.12.apk Binky-Connect-0.3.12.sha256.txt index.html privacy.html terms.html technical.html signin.html install.html Binky-Connect-0.3.8.apk Binky-Connect-0.3.8.sha256.txt Binky-Connect-0.3.9.apk Binky-Connect-0.3.9.sha256.txt Binky-Connect-0.3.10.apk Binky-Connect-0.3.10.sha256.txt Binky-Connect-0.3.11.apk Binky-Connect-0.3.11.sha256.txt Binky-Connect-Windows-0.1.0-x64-Setup.exe Binky-Connect-Windows-0.1.0-x64-Setup.exe.sha256.txt Binky-Connect-Windows-0.1.1-x64-Setup.exe Binky-Connect-Windows-0.1.1-x64-Setup.exe.sha256.txt; do
             echo "Uploading ${page}"
             curl --fail --silent --show-error --ftp-ssl-reqd \
               --user "${FTP_USERNAME}:${FTP_PASSWORD}" \
@@ -94,3 +94,9 @@ jobs:
           curl --fail --silent --show-error "https://binky-ai.co.uk/install.html?deployment=${GITHUB_SHA}" | grep -F "Download Binky Connect for Windows"
 
           curl --fail --silent --show-error "https://binky-ai.co.uk/signin.html?deployment=${GITHUB_SHA}" | grep -F 'href="https://home.binky-ai.co.uk/login"'
+
+          curl --fail --silent --show-error --retry 5 --retry-delay 3 \
+            "https://binky-ai.co.uk/Binky-Connect-Linux-0.1.0-x86_64.run?deployment=${GITHUB_SHA}" \
+            --output /tmp/binky-connect-linux.run
+          test "$(sha256sum /tmp/binky-connect-linux.run | cut -d ' ' -f 1)" = "$(cut -d ' ' -f 1 Binky-Connect-Linux-0.1.0-x86_64.run.sha256.txt)"
+          curl --fail --silent --show-error "https://binky-ai.co.uk/install.html?deployment=${GITHUB_SHA}" | grep -F "Download Binky Connect for Linux"
